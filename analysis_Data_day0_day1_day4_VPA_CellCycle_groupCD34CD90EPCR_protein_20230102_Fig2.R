@@ -19,66 +19,66 @@ library("RColorBrewer")
 library("data.table")
 library("multipanelfigure")
 
-folder_results = "/Users/tiphainemartin/Documents/lab_Hoffman/paper2/results/Day0_Day1_Day4_VPA_control_reviewers/Fig2/"
+folder_results = "/lab_Hoffman/paper2/results/Day0_Day1_Day4_VPA_control_reviewers/Fig2/"
 ##Setup the Seurat objects
 #Day0
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-pc-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-pc-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day0 = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-pc-ADT_ADT_citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-pc-ADT_ADT_citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day0[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day1 - control
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day1-GEX/filtered_feature_bc_matrix/gz'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day1-GEX/filtered_feature_bc_matrix/gz'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day1_ctrl = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-control-day1-ADT_ADT_citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-control-day1-ADT_ADT_citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day1_ctrl[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day1 - VPA
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day1-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day1-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
-seurat_object_day1_vpa = CreateSeuratObject(counts = data_rnaseq)
+seurat_object_day1_vpa = CreateSeuratObject(couns = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-VPA-day1-ADT_ADT_citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-VPA-day1-ADT_ADT_citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day1_vpa[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day4 - control
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day4-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day4-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 dim(data_rnaseq)
 seurat_object_day4_ctrl = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-control-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-control-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 dim(data_adt)
 seurat_object_day4_ctrl[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day4 - VPA
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day4-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day4-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day4_vpa = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-VPA-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-VPA-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day4_vpa[['ADT']] = CreateAssayObject(counts = data_adt)
