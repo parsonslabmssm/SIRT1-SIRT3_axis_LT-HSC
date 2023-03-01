@@ -21,63 +21,63 @@ library("multipanelfigure")
 
 ##Setup the Seurat objects
 #Day0
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-pc-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-pc-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day0 = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-pc-ADT_ADT_citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-pc-ADT_ADT_citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day0[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day1 - control
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day1-GEX/filtered_feature_bc_matrix/gz'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day1-GEX/filtered_feature_bc_matrix/gz'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day1_ctrl = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-control-day1-ADT_ADT_citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-control-day1-ADT_ADT_citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day1_ctrl[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day1 - VPA
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day1-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day1-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day1_vpa = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-VPA-day1-ADT_ADT_citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005137_RonaldHoffman/TD005137-V-VPA-day1-ADT_ADT_citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day1_vpa[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day4 - control
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day4-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-control-day4-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 dim(data_rnaseq)
 seurat_object_day4_ctrl = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-control-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-control-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 dim(data_adt)
 seurat_object_day4_ctrl[['ADT']] = CreateAssayObject(counts = data_adt)
 
 #Day4 - VPA
-data_dir_rnaseq <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day4-GEX/filtered_feature_bc_matrix/gz/'
+data_dir_rnaseq <- '/lab_Hoffman/paper2/rnaseq/TD005069_RonaldHoffman/TD005069-V-VPA-day4-GEX/filtered_feature_bc_matrix/gz/'
 list.files(data_dir_rnaseq) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_rnaseq <- Read10X(data.dir = data_dir_rnaseq)
 colnames(data_rnaseq)<-gsub("-1","",colnames(data_rnaseq))
 seurat_object_day4_vpa = CreateSeuratObject(counts = data_rnaseq)
 
-data_dir_adt <- '/Users/tiphainemartin/Documents/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-VPA-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
+data_dir_adt <- '/lab_Hoffman/paper2/ATD/TD005139_ChristophSchaniel/V-VPA-day4-ADT_ADT_Ava_093.citeseq/umi_count/gz/'
 list.files(data_dir_adt) # Should show barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz
 data_adt <- Read10X(data.dir = data_dir_adt,gene.column = 1,cell.column = 1)
 seurat_object_day4_vpa[['ADT']] = CreateAssayObject(counts = data_adt)
@@ -360,7 +360,7 @@ library(circlize)
 #https://github.com/jokergoo/ComplexHeatmap/issues/148
 #https://stackoverflow.com/questions/60543530/getting-error-object-should-be-a-named-list-when-plotting-heatmap-in-r
 
-folder_svg <- "/Users/tiphainemartin/Documents/lab_Hoffman/paper2/results/Day0_Day1_Day4_VPA_control_reviewers/Fig3/"
+folder_svg <- "/lab_Hoffman/paper2/results/Day0_Day1_Day4_VPA_control_reviewers/Fig3/"
 
 col_fun = colorRamp2(c(-2, 0, 2), c("#2d004b", "#f7f7f7","#b35806"))
 
@@ -464,7 +464,7 @@ Heatmap(wide, name = "Zscore",
         col = col_fun, column_split = annotation$general,
         column_title = NULL)
 
-folder_genes <- "/Users/tiphainemartin/Documents/lab_Hoffman/paper2/data/"
+folder_genes <- "/lab_Hoffman/paper2/data/"
 
 #glycolytic process
 #http://www.informatics.jax.org/go/term/GO:0006096
@@ -586,7 +586,7 @@ Heatmap(wide, name = "Zscore",
         column_title = NULL)
 
 #peroxisome proliferator activated receptor signaling pathway
-folder_genes <- "/Users/tiphainemartin/Documents/lab_Hoffman/paper2/data/"
+folder_genes <- "/lab_Hoffman/paper2/data/"
 #http://www.informatics.jax.org/go/term/GO:0035357
 list_genes <- read.table(file=paste0(folder_genes,"GO_term_summary_20220217_003014.txt"),
                          header=TRUE,sep="\t")
